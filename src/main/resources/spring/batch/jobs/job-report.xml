@@ -68,10 +68,10 @@
 		</property>
 	</bean>
 	
-	<bean id="computation1Tasklet" class="com.sqli.Computation1Tasklet" />
+	<bean id="computation1Tasklet" class="com.sqli.tasklet.Computation1Tasklet" />
 
-	<bean id="computation2Tasklet" class="com.sqli.Computation2Tasklet" />
+	<bean id="computation2Tasklet" class="com.sqli.tasklet.Computation2Tasklet" />
 
-	<bean id="writeFilesTasklet" class="com.sqli.WriteFilesTasklet" />
+	<bean id="writeFilesTasklet" class="com.sqli.tasklet.WriteFilesTasklet" />
 
 </beans>

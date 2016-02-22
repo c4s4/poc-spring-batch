@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS test.RAW_REPORT;
+
+CREATE TABLE test.RAW_REPORT (
+	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date VARCHAR(20),
+    impressions VARCHAR(20),
+    clicks VARCHAR(20),
+    earning VARCHAR(20)
+);

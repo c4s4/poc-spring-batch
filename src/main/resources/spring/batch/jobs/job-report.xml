@@ -32,46 +32,4 @@
 		</batch:step>
 	</batch:job>
 
-    <bean id="report" class="com.sqli.model.Report" scope="prototype" />
-    
-    <bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
-    
-	<bean id="csvFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
-		<property name="resource" value="classpath:csv/report.csv" />
-		<property name="lineMapper">
-			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
-				<property name="lineTokenizer">
-					<bean class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
-						<property name="names" value="date,impressions,clicks,earning" />
-					</bean>
-				</property>
-				<property name="fieldSetMapper">
-					<bean class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
-						<property name="prototypeBeanName" value="report" />
-					</bean>
-				</property>
-			</bean>
-		</property>
-	</bean>
-
-	<bean id="mysqlItemWriter" class="org.springframework.batch.item.database.JdbcBatchItemWriter">
-		<property name="dataSource" ref="dataSource" />
-		<property name="sql">
-			<value>
-            <![CDATA[        
-            	insert into RAW_REPORT(DATE,IMPRESSIONS,CLICKS,EARNING) values (:date, :impressions, :clicks, :earning)
-            ]]>
-			</value>
-		</property>
-		<property name="itemSqlParameterSourceProvider">
-			<bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
-		</property>
-	</bean>
-	
-	<bean id="computation1Tasklet" class="com.sqli.tasklet.Computation1Tasklet" />
-
-	<bean id="computation2Tasklet" class="com.sqli.tasklet.Computation2Tasklet" />
-
-	<bean id="writeFilesTasklet" class="com.sqli.tasklet.WriteFilesTasklet" />
-
 </beans>
